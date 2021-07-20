@@ -2,7 +2,7 @@
 
 Documentation       Test-suite information goes here
 Library             SeleniumLibrary
-Resource            ../Resources/Keywords_General.robot
+Resource            Pamind_Keywords.robot
 Test Setup          Begin Web Test
 Test Teardown       End Web Test
 
