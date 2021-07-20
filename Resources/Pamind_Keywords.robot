@@ -75,5 +75,6 @@ Add All Top Contracts
     click element               xpath://html/body/div[3]/div[3]/div/div/div[2]/div/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[2]/span/span[1]/input
     click element               xpath://html/body/div[3]/div[3]/div/div/div[2]/div/div[1]/div[3]/div/div[2]/button
 
+unga bunga git
 End Web Test
     Close browser
