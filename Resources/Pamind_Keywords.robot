@@ -68,6 +68,10 @@ Confirm Account Details
     ${PHONE_ACTUAL}             get text    xpath://html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[2]/div/div[4]/div[2]/div/div[2]
     should be equal             ${PHONE_ACTUAL}     ${PHONE}
 
+Skip
+    page should contain         Hoppa över
+    click element               xpath://html/body/div[3]/div[3]/div/header/div/div[2]/button/span[1]
+
 Add All Top Contracts
     page should contain         Välkommen till Påmind
     click button                xpath:///*[@id="E2E_GetStarted"]

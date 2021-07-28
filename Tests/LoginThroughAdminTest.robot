@@ -13,7 +13,8 @@ Påmind Admin Login
     Login Using Admin Credentials
     Search And Access Specified User
     Sign In And Confirm Account Details
-    Go To Dashboard && Add All Top Contracts
+    Go To Dashboard && Add One Contract
+    Teardown
 
 # Access Påmind App Through Admin 2
 #    [Tags]              APA
