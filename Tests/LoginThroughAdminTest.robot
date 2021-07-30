@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       Temporary bypass of the BankID issue, can only be used with admin credentials for admin 2.
 Library             SeleniumLibrary
-Resource            ../Resources/Pamind_AdminLogin.robot
+Resource            Keywords_AdminLogin.robot
 Test Setup          Begin Web Test
 Test Teardown       End Web Test
 

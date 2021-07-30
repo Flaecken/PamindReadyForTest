@@ -14,9 +14,12 @@ ${PHONE}            0703867320
 
 *** Keywords ***
 Begin Web Test
-    set selenium speed  0
     Open browser        about:blank     ${BROWSER}
     Go to               ${URL}
+    Access Web Page
+    Login Using Admin Credentials
+    Search And Access Specified User
+    Sign In And Confirm Account Details
 
 Access Web Page
     wait until page contains            Logga in
@@ -54,9 +57,23 @@ Sign In And Confirm Account Details
     ${PHONE_ACTUAL}                     get text    xpath://html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[2]/div/div[4]/div[2]/div/div[2]
     should be equal                     ${PHONE_ACTUAL}     ${PHONE}
 
+Sign PoA
+    wait until page contains            Dina avtal
+    click element                       xpath://html/body/div[1]/div[2]/div/div[2]/div[3]/div/div[2]/div/button[1]/span[1]/div/div[2]/div
+    wait until page contains            fullmakt
+    click button                        xpath://html/body/div[3]/div[3]/div/div/div[2]/div/div/div[3]/button
+    ${SCRIVE}                           get title
+    should be equal                     ${SCRIVE}   Scrive
+    wait until page contains            ${NAME}, Följ PILEN
+    click element                       xpath://html/body/div/div/div[2]/div/div/div/svg
+    click element                       xpath://html/body/div/div/div[3]/div[3]/div/a[1]/div[1]
+    wait until page contains            Signera
+    click element                       xpath://html/body/div/div/div[3]/div[3]/div[1]/a[1]/div
+    wait until page contains            Dina avtal
+
 Skip
-    page should contain         Hoppa över
-    click element               xpath://html/body/div[3]/div[3]/div/header/div/div[2]/button/span[1]
+    page should contain                 Hoppa över
+    click element                       xpath://html/body/div[3]/div[3]/div/header/div/div[2]/button/span[1]
 
 Go To Dashboard && Add One Contract
     click element                       xpath://html/body/div[1]/div[2]/div/header/div/div[2]/div/div[1]/a/div
@@ -103,6 +120,12 @@ Go To Dashboard && Add All Top Contracts
     wait until page contains            Wohoo!
     page should contain                 7 avtal
     click button                        xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/div[2]/button
+
+Add Manual Contract Info
+    x
+
+Edit Contract
+    x
 
 Delete Account
     go to                               ${URL_PROFILE}
