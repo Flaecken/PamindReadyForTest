@@ -1,18 +1,18 @@
 *** Settings ***
 Documentation       Temporary bypass of the BankID issue, can only be used with admin credentials for admin 2.
 Library             SeleniumLibrary
-Resource            Keywords_AdminLogin.robot
+Resource            ../Resources/Keywords_AdminLogin.robot
 Test Setup          Begin Web Test
 Test Teardown       End Web Test
 
 *** Test Cases ***
+
+#Clear
+    #repeat keyword      7 times     Delete Contracts
+
 Påmind Admin Login
     [Tags]              PAL
     [Documentation]     Logging into Påmind Admin 2.0...
-    Access Web Page
-    Login Using Admin Credentials
-    Search And Access Specified User
-    Sign In And Confirm Account Details
     Go To Dashboard && Add One Contract
     Teardown
 

@@ -12,8 +12,15 @@ ${NAME}             Jolin Franzke
 ${EMAIL}            test@pamind.se
 ${PHONE}            0703867320
 
+#Mobilavtal
+${AVTALSNAMN}       Test
+${SURF}             8
+${KOSTNAD}          100
+${BIND}             3
+
 *** Keywords ***
 Begin Web Test
+    set selenium speed  0.1
     Open browser        about:blank     ${BROWSER}
     Go to               ${URL}
     Access Web Page
@@ -58,14 +65,13 @@ Sign In And Confirm Account Details
     should be equal                     ${PHONE_ACTUAL}     ${PHONE}
 
 Sign PoA
-    wait until page contains            Dina avtal
-    click element                       xpath://html/body/div[1]/div[2]/div/div[2]/div[3]/div/div[2]/div/button[1]/span[1]/div/div[2]/div
-    wait until page contains            fullmakt
-    click button                        xpath://html/body/div[3]/div[3]/div/div/div[2]/div/div/div[3]/button
+    wait until page contains            Få rabatter på dina nuvarande avtal
+    click button                        xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/div[3]/button
+    wait until page contains            Signerar dokument
     ${SCRIVE}                           get title
     should be equal                     ${SCRIVE}   Scrive
-    wait until page contains            ${NAME}, Följ PILEN
-    click element                       xpath://html/body/div/div/div[2]/div/div/div/svg
+    wait until page contains            ${NAME}, följ PILEN
+    scroll element into view            xpath://html/body/div/div/div[3]/div[3]/div/a[1]
     click element                       xpath://html/body/div/div/div[3]/div[3]/div/a[1]/div[1]
     wait until page contains            Signera
     click element                       xpath://html/body/div/div/div[3]/div[3]/div[1]/a[1]/div
@@ -121,8 +127,25 @@ Go To Dashboard && Add All Top Contracts
     page should contain                 7 avtal
     click button                        xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/div[2]/button
 
-Add Manual Contract Info
-    x
+Access Manual Contract Info
+    go to                               ${CONTRACTS}
+    wait until page contains            Rekommenderat
+    click element                       xpath://html/body/div[1]/div[2]/div/div[2]/div[3]/div/div[2]/div/div[4]/div/div/div[1]
+    wait until page contains            Avtal
+    click element                       xpath://html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div/div[3]/div[2]/div[2]
+    wait until page contains            Hämta avtalsinformation
+    click button                        xpath://html/body/div[3]/div[3]/div/div/div[2]/div/div/div[3]/button
+
+Add And Confirm Manual Contract Info
+    wait until page contains            Avtalsinformation
+    input text                          xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/ul/div/div[1]/div/div/div/div/input              ${PHONE}
+    input text                          xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/ul/div/div[2]/div/div/div/div/input              ${AVTALSNAMN}
+    input text                          xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/ul/div/div[3]/div[1]/div[1]/div/input            ${SURF}
+    input text                          xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/ul/div/div[4]/div/div[1]/div/input               ${KOSTNAD}
+    input text                          xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/ul/div/div[5]/div[1]/div[1]/div[1]/div/input     ${BIND}
+    click element                       xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/div[4]/div[3]/div[3]/svg
+    click button                        xpath://html/body/div[4]/div[3]/div/div/div[2]/div/div/button
+    reload page
 
 Edit Contract
     x
@@ -135,6 +158,18 @@ Delete Account
     wait until page contains            Avregistrera mig som kund
     click button                        xpath://html/body/div[4]/div[3]/div/div[2]/div/button
     wait until page contains            Logga in
+
+Delete Contracts
+    go to                           ${CONTRACTS}
+    wait until page contains        Rekommenderat
+    click element                   xpath://html/body/div[1]/div[2]/div/div[2]/div[3]/div/div[2]/div/div[4]/div/div/div[1]
+    wait until page contains        Avtal
+    click element                   xpath://html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div/div[2]/div/div[1]/div[1]/div[2]/button/span[1]/svg
+    click element                   xpath://html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[2]/div[1]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div/div/li[1]/div
+    wait until page contains        Ta bort avtal
+    click button                    xpath://html/body/div[3]/div[3]/div/div[2]/div/button
+
+Delete PoA
 
 Teardown
     go to                               ${CONTRACTS}
